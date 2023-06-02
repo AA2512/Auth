@@ -1,25 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/styles.css">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-    <title>Dashboard</title>
+    <meta name="author" content="Webpixels" />
+    <title>LearnFlow - Dashboard</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../cstm-assets/logo.svg" type="image/png" />
+    <!-- Font Awesome 5 -->
+    <link
+      rel="stylesheet"
+      href="../libs/@fortawesome/fontawesome-free/css/all.min.css"
+    />
+    <!-- Page CSS -->
+    <link
+      type="text/css"
+      href="../libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css"
+      rel="stylesheet"
+    />
+    <!-- Purpose CSS -->
+    <link rel="stylesheet" href="../css/purpose.css" id="stylesheet" />
+    <style>
+      #post-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 2rem;
+      }
+      @media screen and (max-width: 576px) {
+        #post-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </head>
+
   <body>
-    <%- include('partials/navbar.ejs') -%>
-    <h1>Dashboard</h1>
-    
+    <header class="header header-transparent" id="header-main">
+      <!-- Main navbar -->
+      <%- include('partials/navbar'); %>
+    </header>
 
-    <% for(let i=0; i<posts.length; i++) { %>
-
-        <h3> <%=posts[i].title %> </h3>
-
-
-    <% } %>
-
-    <script src="./js/dashboard.js"></script>
+    <div class="main-content">
+      <!-- Header (account) -->
+      <%- include('partials/header'); %>
+      <section class="pt-5 pt-lg-0">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4">
+              <!-- Profile Card -->
+              <%- include('partials/profile'); %>
+            </div>
+            <div class="col-lg-8 mt-lg-5" id="post-grid" style=""></div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- Footer-->
+    <%- include('partials/footer'); %>
+    <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
+    <script src="../js/purpose.core.js"></script>
+    <!-- Page JS -->
+    <script src="../libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="../libs/autosize/dist/autosize.min.js"></script>
+    <!-- Purpose JS -->
+    <script src="../js/purpose.js"></script>
+    <!-- Demo JS - remove it when starting your project -->
+    <script src="../js/demo.js"></script>
   </body>
 </html>
