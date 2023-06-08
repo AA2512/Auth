@@ -3,6 +3,7 @@ const passport = require("passport");
 
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 const { ensureNewUser, ensureSignUp } = require("../middleware/user");
+const { fetchAllPosts } = require("../middleware/post");
 
 const router = express.Router();
 
@@ -33,8 +34,14 @@ router.patch(
   }
 );
 
-router.get("/dashboard", ensureAuth, ensureSignUp, (req, res) => {
-  res.render("dashboard");
-});
+router.get(
+  "/dashboard",
+  ensureAuth,
+  ensureSignUp,
+  fetchAllPosts,
+  (req, res) => {
+    res.render("dashboard");
+  }
+);
 
 module.exports = router;
