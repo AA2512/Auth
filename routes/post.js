@@ -55,7 +55,7 @@ router.get("/post/:id", ensureAuth, async (req, res) => {
     const author = await User.findById(post.userID);
     const postDate = moment(post.createdAt).format("dddd, MMMM Do YYYY");
 
-    const comments = await Comment.find({ postID: postID });
+    const comments = await Comment.find({ postID: postID, depth: 1 });
 
     res.locals.post = post;
     res.locals.comments = comments;

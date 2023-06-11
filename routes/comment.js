@@ -28,7 +28,8 @@ router.post("/create/comment", ensureAuth, async (req, res) => {
 
 router.get("/fetch/reply", ensureAuth, async (req, res) => {
   const parentID = req.query.parentID;
-  const parentDepth = req.query.parentDepth;
+  const parentDepth = Number(req.query.parentDepth);
+
   try {
     const comments = await Comment.find({
       parentID: parentID,
